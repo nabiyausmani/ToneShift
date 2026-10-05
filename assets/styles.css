@@ -1,0 +1,440 @@
+/* assets/styles.css — ToneShift Custom Styles */
+
+/* ── Google Fonts ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ── Root Variables ───────────────────────────────────────────────── */
+:root {
+  --bg-primary:      #0f1117;
+  --bg-secondary:    #1a1d27;
+  --bg-card:         #1e2130;
+  --bg-card-hover:   #252840;
+  --accent-primary:  #7c6bff;
+  --accent-secondary:#a78bfa;
+  --accent-glow:     rgba(124, 107, 255, 0.3);
+  --text-primary:    #f0f2ff;
+  --text-secondary:  #9aa0bf;
+  --text-muted:      #5a607a;
+  --border-subtle:   rgba(255,255,255,0.07);
+  --border-accent:   rgba(124, 107, 255, 0.4);
+  --success:         #22c55e;
+  --warning:         #f59e0b;
+  --danger:          #ef4444;
+  --radius-lg:       16px;
+  --radius-md:       12px;
+  --radius-sm:       8px;
+  --shadow-card:     0 4px 24px rgba(0,0,0,0.4);
+  --shadow-accent:   0 0 30px rgba(124, 107, 255, 0.2);
+}
+
+/* ── Global Resets ────────────────────────────────────────────────── */
+html, body, .stApp {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── Hide Streamlit Branding ──────────────────────────────────────── */
+#MainMenu, footer, header { visibility: hidden; }
+.stDeployButton { display: none; }
+
+/* ── Main Container ───────────────────────────────────────────────── */
+.block-container {
+  padding: 1.5rem 2.5rem !important;
+  max-width: 1400px !important;
+}
+
+/* ── Hero Header ──────────────────────────────────────────────────── */
+.ts-hero {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  background: linear-gradient(135deg,
+    rgba(124,107,255,0.12) 0%,
+    rgba(167,139,250,0.06) 50%,
+    transparent 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ts-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(124,107,255,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ts-logo {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a78bfa, #7c6bff, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  margin-bottom: 0.25rem;
+}
+
+.ts-tagline {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.ts-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Cards ────────────────────────────────────────────────────────── */
+.ts-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ts-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), var(--shadow-accent);
+}
+
+.ts-card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Section Labels ───────────────────────────────────────────────── */
+.ts-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+}
+
+/* ── Stat Badges ──────────────────────────────────────────────────── */
+.ts-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.ts-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(124,107,255,0.12);
+  border: 1px solid rgba(124,107,255,0.25);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent-secondary);
+  white-space: nowrap;
+}
+
+.ts-badge-neutral {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+/* ── Score Bar ────────────────────────────────────────────────────── */
+.ts-score-bar-bg {
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  height: 10px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.ts-score-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* ── Status Indicators ────────────────────────────────────────────── */
+.ts-status-green  { color: var(--success); font-weight: 700; }
+.ts-status-yellow { color: var(--warning); font-weight: 700; }
+.ts-status-red    { color: var(--danger);  font-weight: 700; }
+
+/* ── Comparison Grid ──────────────────────────────────────────────── */
+.ts-compare-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  height: 100%;
+  min-height: 200px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ts-compare-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ts-compare-label-orig  { color: #60a5fa; }
+.ts-compare-label-rew   { color: #a78bfa; }
+
+/* ── Tone Comparison Cards ────────────────────────────────────────── */
+.ts-tone-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+  height: 100%;
+}
+
+.ts-tone-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+.ts-tone-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border-radius: 20px;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+/* ── History Items ────────────────────────────────────────────────── */
+.ts-history-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s;
+}
+
+.ts-history-item:hover {
+  border-color: var(--border-accent);
+}
+
+.ts-history-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* ── Streamlit Widget Overrides ───────────────────────────────────── */
+
+/* Textareas */
+.stTextArea textarea {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.93rem !important;
+  padding: 0.9rem 1rem !important;
+  transition: border-color 0.2s !important;
+}
+
+.stTextArea textarea:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px var(--accent-glow) !important;
+}
+
+/* Select boxes */
+.stSelectbox > div > div {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Sliders */
+.stSlider .stSlider-thumb {
+  background: var(--accent-primary) !important;
+}
+
+/* Buttons */
+.stButton > button {
+  background: linear-gradient(135deg, var(--accent-primary), #6d5ce7) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', sans-serif !important;
+  padding: 0.6rem 1.4rem !important;
+  font-size: 0.9rem !important;
+  transition: all 0.2s ease !important;
+  letter-spacing: 0.02em !important;
+}
+
+.stButton > button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(124,107,255,0.45) !important;
+  background: linear-gradient(135deg, #8b7aff, var(--accent-primary)) !important;
+}
+
+.stButton > button:active {
+  transform: translateY(0) !important;
+}
+
+/* Secondary buttons */
+.stButton > button[kind="secondary"] {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+
+.stButton > button[kind="secondary"]:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: var(--border-accent) !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+  background: var(--bg-secondary) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.25rem !important;
+  gap: 0.25rem !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1.25rem !important;
+  border: none !important;
+  transition: all 0.2s !important;
+}
+
+.stTabs [aria-selected="true"] {
+  background: var(--accent-primary) !important;
+  color: white !important;
+}
+
+/* Multiselect */
+.stMultiSelect > div > div {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Info / Warning / Success boxes */
+.stAlert {
+  border-radius: var(--radius-md) !important;
+}
+
+/* Metrics */
+.stMetric {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.stMetric label {
+  color: var(--text-muted) !important;
+  font-size: 0.78rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.stMetric .stMetricValue {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+}
+
+/* Expander */
+.stExpander {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Dividers */
+hr {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Code blocks */
+code {
+  background: rgba(124,107,255,0.12) !important;
+  color: var(--accent-secondary) !important;
+  padding: 0.15rem 0.4rem !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+}
+
+/* ── Scrollbar Styling ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(124,107,255,0.3);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+/* ── Animations ───────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50%       { box-shadow: 0 0 20px 4px var(--accent-glow); }
+}
+
+.ts-fade-in {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* ── Responsive Tweaks ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .block-container { padding: 1rem 1rem !important; }
+  .ts-hero { padding: 1.5rem 0.75rem; }
+  .ts-logo { font-size: 2.2rem; }
+}
